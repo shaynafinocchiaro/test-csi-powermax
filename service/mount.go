@@ -411,10 +411,11 @@ func mkfile(path string) (bool, error) {
 				log.WithField("path", path).WithError(
 					err).Error("Unable to create file")
 				return false, err
-			}
+			} else {
 			file.Close() // #nosec G20
 			log.WithField("path", path).Debug("created file")
 			return true, nil
+			}
 		} else {
 			log.WithField("path", path).WithError(
 				err).Error("Unable to create file")
@@ -437,9 +438,10 @@ func mkdir(path string) (bool, error) {
 				log.WithField("dir", path).WithError(
 					err).Error("Unable to create dir")
 				return false, err
-			}
+			} else {
 			log.WithField("path", path).Debug("created directory")
 			return true, nil
+		        }
 		} else {
 			log.WithField("path", path).WithError(
 				err).Error("Unable to create dir")
