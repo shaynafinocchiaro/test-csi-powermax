@@ -414,13 +414,12 @@ func mkfile(path string) (bool, error) {
 			file.Close() // #nosec G20
 			log.WithField("path", path).Debug("created file")
 			return true, nil
-			}
-			return false, err
+			}			
 		} else {
 			log.WithField("path", path).WithError(
 				err).Error("Unable to create file")
-			return false, err
 		}
+		return false, err
 	}
 	if st.IsDir() {
 		return false, fmt.Errorf("existing path is a directory")
@@ -437,16 +436,14 @@ func mkdir(path string) (bool, error) {
 			if err := os.Mkdir(path, 0750); err != nil {
 				log.WithField("dir", path).WithError(
 					err).Error("Unable to create dir")
-				return false, err
-			} else {
+				} else {
 			log.WithField("path", path).Debug("created directory")
 		        }
 		} else {
 			log.WithField("path", path).WithError(
 				err).Error("Unable to create dir")
-			return false, err
 		}		
-		return true, nil
+		return false, err
 	}
 	if !st.IsDir() {
 		return false, fmt.Errorf("existing path is not a directory")
