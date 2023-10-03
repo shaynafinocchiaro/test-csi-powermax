@@ -409,12 +409,12 @@ func mkfile(path string) (bool, error) {
 			file, err := os.OpenFile(path, os.O_CREATE, 0600) // #nosec G304
 			if err != nil {
 				log.WithField("path", path).WithError(
-					err).Error("Unable to create file")				
+					err).Error("Unable to create file")
 			} else {
-			file.Close() // #nosec G20
-			log.WithField("path", path).Debug("created file")
-			return true, nil
-			}			
+				file.Close() // #nosec G20
+				log.WithField("path", path).Debug("created file")
+				return true, nil
+			}
 		} else {
 			log.WithField("path", path).WithError(
 				err).Error("Unable to create file")
@@ -436,13 +436,13 @@ func mkdir(path string) (bool, error) {
 			if err := os.Mkdir(path, 0750); err != nil {
 				log.WithField("dir", path).WithError(
 					err).Error("Unable to create dir")
-				} else {
-			log.WithField("path", path).Debug("created directory")
-		        }
+			} else {
+				log.WithField("path", path).Debug("created directory")
+			}
 		} else {
 			log.WithField("path", path).WithError(
 				err).Error("Unable to create dir")
-		}		
+		}
 		return false, err
 	}
 	if !st.IsDir() {
