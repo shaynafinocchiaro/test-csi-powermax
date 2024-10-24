@@ -131,6 +131,7 @@ func (e *envoy) GetBackup() *Proxy {
 
 // healthHandler - call back method which updates a proxy's health
 func (e *envoy) healthHandler(isSuccess bool) {
+	log.Debug("in healthHandler %t", isSuccess)
 	if isSuccess {
 		e.healthMonitor.ReportSuccess()
 	} else {

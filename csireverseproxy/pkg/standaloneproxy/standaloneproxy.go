@@ -55,6 +55,7 @@ type StandAloneProxy struct {
 func NewStandAloneProxy(proxyConfig config.StandAloneProxyConfig) (*StandAloneProxy, error) {
 	envoyMap := make(map[string]common.Envoy)
 	for arrayID, serverArray := range proxyConfig.GetManagedArraysAndServers() {
+		log.Debugf("Adding array %s serverArray %+v to envoy", arrayID, serverArray)
 		envoy := newEnvoyClient(serverArray)
 		envoyMap[arrayID] = envoy
 	}
@@ -75,6 +76,7 @@ func newEnvoyClient(serverArray config.StorageArrayServer) common.Envoy {
 		envoy.SetBackup(&backupProxy)
 		envoy.SetBackupHTTPClient(backupHTTPClient)
 	}
+	log.Debugf("Adding envoy %+v", envoy)
 	return envoy
 }
 

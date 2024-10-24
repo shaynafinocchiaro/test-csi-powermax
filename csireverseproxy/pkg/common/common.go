@@ -95,6 +95,7 @@ func (health *proxyHealth) ReportSuccess() {
 // or clears the failure count if error threshold is not met after maximum
 // failure duration
 func (health *proxyHealth) ReportFailure() bool {
+	log.Debug("In reportFailure, failureCount: %d", health.failureCount)
 	health.healthMutex.Lock()
 	defer health.healthMutex.Unlock()
 	if health.failureCount == 0 {
@@ -104,6 +105,8 @@ func (health *proxyHealth) ReportFailure() bool {
 		return false
 	}
 	timeElapsed := time.Since(health.firstFailure)
+	log.Debug("In reportFailure, timeElapsed: %v", timeElapsed)
+
 	if timeElapsed < health.maximumFailureDuration {
 		health.failureCount++
 		return false
@@ -170,7 +173,7 @@ func (t *Transport) RoundTrip(req *http.Request) (*http.Response, error) {
 		log.Debugf("Request ID: %s - Reporing non-200 code to proxy health", requestID)
 	} else if int(resp.StatusCode/100) == 2 {
 		t.HealthHandler(true)
-		log.Debugf("Request ID: %s - Reporting 2xx response to proxy health", requestID)
+		log.Debugf("Request ID: %s - 	Reporting 2xx response to proxy health", requestID)
 	}
 	return resp, err
 }
