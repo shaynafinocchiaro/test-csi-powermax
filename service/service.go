@@ -431,6 +431,10 @@ func (s *service) BeforeServe(
 		opts.ReplicationPrefix = replicationPrefix
 	}
 
+	if opts.ReplicationPrefix == "" {
+		opts.ReplicationPrefix = "replication.storage.dell.com"
+	}
+
 	if MaxVolumesPerNode, ok := csictx.LookupEnv(ctx, EnvMaxVolumesPerNode); ok {
 		val, err := strconv.ParseInt(MaxVolumesPerNode, 10, 64)
 		if err != nil {
