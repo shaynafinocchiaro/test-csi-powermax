@@ -19,7 +19,7 @@ import (
 	"os"
 	"testing"
 
-	"revproxy/v2/pkg/utils"
+	"github.com/dell/csi-powermax/csireverseproxy/pkg/utils"
 
 	log "github.com/sirupsen/logrus"
 )

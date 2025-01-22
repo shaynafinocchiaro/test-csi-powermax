@@ -32,11 +32,11 @@ import (
 	"testing"
 	"time"
 
-	"revproxy/v2/pkg/common"
-	"revproxy/v2/pkg/config"
-	"revproxy/v2/pkg/k8smock"
-	"revproxy/v2/pkg/servermock"
-	"revproxy/v2/pkg/utils"
+	"github.com/dell/csi-powermax/csireverseproxy/pkg/common"
+	"github.com/dell/csi-powermax/csireverseproxy/pkg/config"
+	"github.com/dell/csi-powermax/csireverseproxy/pkg/k8smock"
+	"github.com/dell/csi-powermax/csireverseproxy/pkg/servermock"
+	"github.com/dell/csi-powermax/csireverseproxy/pkg/utils"
 
 	log "github.com/sirupsen/logrus"
 

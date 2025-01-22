@@ -17,7 +17,7 @@ package servermock
 import (
 	"net/http"
 
-	"revproxy/v2/pkg/utils"
+	"github.com/dell/csi-powermax/csireverseproxy/pkg/utils"
 
 	"github.com/gorilla/mux"
 )

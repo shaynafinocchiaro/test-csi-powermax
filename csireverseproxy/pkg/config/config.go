@@ -20,9 +20,9 @@ import (
 	"net/url"
 	"reflect"
 
-	"revproxy/v2/pkg/common"
-	"revproxy/v2/pkg/k8sutils"
-	"revproxy/v2/pkg/utils"
+	"github.com/dell/csi-powermax/csireverseproxy/pkg/common"
+	"github.com/dell/csi-powermax/csireverseproxy/pkg/k8sutils"
+	"github.com/dell/csi-powermax/csireverseproxy/pkg/utils"
 
 	log "github.com/sirupsen/logrus"
 
