@@ -1,4 +1,4 @@
-module revproxy/v2
+module github.com/dell/csi-powermax/csireverseproxy
 
 go 1.23
 
